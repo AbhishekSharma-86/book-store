@@ -4,6 +4,8 @@ document.querySelector('#search-btn').onclick = () =>{
   searchForm.classList.toggle('active');
 }
 
+
+
 let loginForm = document.querySelector('.login-form-container');
 
 document.querySelector('#login-btn').onclick = () =>{
@@ -158,3 +160,75 @@ var swiper = new Swiper(".blogs-slider", {
     },
   },
 });
+
+let cartData = [
+  {
+    imageSrc: "./image/book-1.png"
+  },
+  {
+    imageSrc: "./image/book-2.png"
+  },
+  {
+    imageSrc: "./image/book-3.png"
+  },
+  {
+    imageSrc: "./image/book-4.png"
+  },
+  {
+    imageSrc: "./image/book-5.png"
+  },
+  {
+    imageSrc: "./image/book-6.png"
+  },
+  {
+    imageSrc: "./image/book-7.png"
+  },
+  {
+    imageSrc: "./image/book-8.png"
+  },
+  {
+    imageSrc: "./image/book-9.png"
+  },
+  {
+    imageSrc: "./image/book-10.png"
+  }
+];
+
+// var cart = document.getElementsByClassName('swiper-wrapper');
+var cart = document.getElementById("cart");
+console.log(cart);
+
+let htmlAdd = "";
+var  count = 0;
+
+var updateHTML = function(){
+  console.log(this.id);
+  if(count === 4){
+    alert("your Cart is FUll");
+    return;
+  }
+  htmlAdd += `<div class="box" style="margin: auto;">
+  <div class="icons">
+      <a href="#" class="fas fa-search"></a>
+      <a href="#" class="fas fa-heart"></a>
+      <a href="#" class="fas fa-eye"></a>
+  </div>
+  <div class="image">
+      <img src="image/book-${this.id}.png" alt="">
+  </div>
+  <div class="content">
+      <h3>featured books</h3>
+      <div class="price">$15.99 <span>$20.99</span></div>
+      <a href="#" class="btn addCart">Checkout</a>
+  </div>
+</div>`
+
+console.log(cart);
+cart.innerHTML = htmlAdd;
+count += 1;
+}
+
+
+document.querySelectorAll(".addCart").forEach(btn=>{
+  btn.onclick = updateHTML;
+})
